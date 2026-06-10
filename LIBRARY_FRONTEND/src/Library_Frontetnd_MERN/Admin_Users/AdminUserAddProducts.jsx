@@ -21,13 +21,12 @@ export const AdminUserAddProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userName = localStorage.getItem("userNAME");
-  const userEmaiil = localStorage.getItem("userEMAIL");
+  // const userName = localStorage.getItem("userNAME");
+  // const userEmaiil = localStorage.getItem("userEMAIL");
   const userToken = localStorage.getItem("userTOKEN");
   const userAdmin = localStorage.getItem("userADMIN");
 
   const [loading, setLoading] = useState(true);
-  const [productsStatus, setProductsStatus] = useState("");
   const productStatus = (status, id) => {
     // setProductsStatus(status);
     // console.log(status , id);
