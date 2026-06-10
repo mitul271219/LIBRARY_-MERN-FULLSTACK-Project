@@ -209,7 +209,7 @@ const LogoutUserToken = async (req, res, next) => {
 
 // SendRestLink
   const SendRestLink  = async (req , res , next) => {
-    console.log(req.body.email);
+    console.log(" RsetLink Email " + req.body.email);
     try{
     const {email} = req.body
     const findUserEmail = await usersLibraryData.findOne({email:email})
@@ -221,7 +221,8 @@ const LogoutUserToken = async (req, res, next) => {
         const reset_token = shortid.generate() // generate uniq id , (like genrate token)
         const expiresAt = new Date(Date.now() + (10 * 60 * 1000)); // 10 minute from now
         // Your Reset Password Link  
-        const resetLink = ` http://localhost:3001/userpassreset/${reset_token}`
+        // const resetLink = ` http://localhost:3002/userpassreset/${reset_token}`
+        const resetLink = ` https://library-mern-fullstack-frontend-pro.vercel.app/userpassreset/${reset_token}`
 
         const adminResetTokenData = await UserPasswordResetToken.create({
             UserRest_email:findUserEmail.email,

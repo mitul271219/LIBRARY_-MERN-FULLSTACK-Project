@@ -1,7 +1,6 @@
 import React from 'react'
 import "./FooterLibrary.css";
 import { FaFacebookF, FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import './FooterLibrary.css'
 
 export const FooterLibrary = () => {
@@ -42,10 +41,10 @@ export const FooterLibrary = () => {
         <div className="footer-section">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaGithub /></a>
+            <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/"><FaInstagram /></a>
+            <a href="https://x.com/"><FaTwitter /></a>
+            <a href="https://en.wikipedia.org/wiki/GitHub"><FaGithub /></a>
           </div>
         </div>
       </div>

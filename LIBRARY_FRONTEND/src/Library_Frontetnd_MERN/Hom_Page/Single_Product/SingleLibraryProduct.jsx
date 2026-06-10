@@ -14,14 +14,12 @@ import "./SingleLibraryProduct.css";
 
 import { NavbarLibrary } from "../../Navbar_Library/NavbarLibrary";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { FooterLibrary } from "../Footer_Component/FooterLibrary";
 
 export const SingleLibraryProduct = () => {
   const state = useSelector((state) => state?.LibraryProject);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -111,7 +109,9 @@ export const SingleLibraryProduct = () => {
                     >
                       <img
                         className="d-block w-100 slider-image"
-                        src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productImage}`}
+                        // For localhost API use
+                        // src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productImage}`}
+                        src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${ele?.productImage}`}
                         alt="product"
                       />
                     </div>

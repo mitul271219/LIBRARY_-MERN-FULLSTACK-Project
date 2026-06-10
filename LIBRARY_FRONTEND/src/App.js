@@ -19,6 +19,7 @@ import { PaymentSuccess } from "./Library_Frontetnd_MERN/Users/PaymentSuccess";
 import { OrderPage } from "./Library_Frontetnd_MERN/Users/OrderPage";
 import { OrderHistory } from "./Library_Frontetnd_MERN/Users/OrderHistory";
 import { AboutLibrary } from "./Library_Frontetnd_MERN/Hom_Page/About_Component/AboutLibrary";
+import { NotFound } from "./Library_Frontetnd_MERN/404NotFoundPage/NotFound";
 
 
 function App() {
@@ -94,6 +95,8 @@ function App() {
         <Route path="/paymentSuccess" element={<PaymentSuccess />}/>
         <Route path="/order" element={<OrderPage />}/>
         <Route path="/orderHistory" element={<OrderHistory />} />
+         {/* 404 PAGE (IMPORTANT) */}
+         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

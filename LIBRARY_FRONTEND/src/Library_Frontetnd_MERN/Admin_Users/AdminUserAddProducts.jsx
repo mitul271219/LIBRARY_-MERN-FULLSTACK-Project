@@ -198,7 +198,7 @@ export const AdminUserAddProducts = () => {
         setLoading(false);
       }, 1500); // 1.5 sec loader
     }
-  }, [dispatch, userToken]);
+  }, [dispatch, userToken, navigate, userAdmin]);
 
   // ✅ Spinner UI
   if (loading) {
@@ -210,58 +210,10 @@ export const AdminUserAddProducts = () => {
     );
   }
 
-  // css syels
-  // Inline styles
-  const tableStyle = {
-    width: "90%",
-    margin: "40px auto",
-    borderCollapse: "collapse",
-    boxShadow: "0px 0px 10px rgba(0,0,0,0.2)",
-  };
-
-  const thStyle = {
-    backgroundColor: "#007bff",
-    color: "white",
-    padding: "10px",
-    // textAlign: "left",
-    textAlign: "center",
-    border: "1px solid #ddd",
-  };
-
-  const tdStyle = {
-    padding: "10px",
-    border: "1px solid #ddd",
-    // textAlign: "left"
-    textAlign: "center",
-  };
-
-  const imgStyle = {
-    width: "80px",
-    height: "80px",
-    objectFit: "cover",
-    borderRadius: "5px",
-  };
-
-  const deleteButtonStyle = {
-    backgroundColor: "red",
-    color: "white",
-    border: "none",
-    padding: "6px 12px",
-    borderRadius: "4px",
-    cursor: "pointer",
-  };
-  const deleteButtonStyle_UplpadImage = {
-    backgroundColor: "gray",
-    color: "white",
-    border: "none",
-    padding: "6px 12px",
-    borderRadius: "4px",
-    cursor: "pointer",
-  };
 
   return (
     <>
-      return (
+      
       <>
         <NavbarLibrary />
 
@@ -411,7 +363,9 @@ export const AdminUserAddProducts = () => {
               {filteredProducts?.map((product, index) => (
                 <div className="product-card" key={product._id}>
                   <img
-                    src={`http://localhost:3011/upload_Image_Products_&_Category/${product?.productThumb}`}
+                    // For localhost API use 
+                    // src={`http://localhost:3011/upload_Image_Products_&_Category/${product?.productThumb}`}
+                    src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${product?.productThumb}`}
                     alt={product?.productName}
                     className="product-image"
                   />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './UserForgotPassword.css';
 import { NavbarLibrary } from '../Navbar_Library/NavbarLibrary';
@@ -13,7 +13,6 @@ export const UserForgetPassword = () => {
     
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [resetForm, setResetForm] = useState({
     email: ''

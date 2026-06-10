@@ -311,8 +311,20 @@ body {
   }
 
   .welcome-box {
-    display: none;
+    display: block;
+    text-align: center;
   }
+  .welcome-box span {
+    font-size: 10px;
+  }
+  .welcome-box h4 {
+    font-size: 12px;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }
 
 @media (max-width: 768px) {

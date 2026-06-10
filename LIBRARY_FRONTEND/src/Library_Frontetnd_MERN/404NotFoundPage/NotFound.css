@@ -1,0 +1,69 @@
+.notfound-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    padding: 20px;
+  }
+  
+  .notfound-box {
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .error-code {
+    font-size: 90px;
+    font-weight: 800;
+    margin: 0;
+    color: #38bdf8;
+  }
+  
+  .error-title {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  
+  .error-desc {
+    font-size: 16px;
+    margin: 15px 0 25px;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+  
+  .home-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .home-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .error-code {
+      font-size: 60px;
+    }
+  
+    .notfound-box {
+      padding: 25px;
+    }
+  
+    .error-title {
+      font-size: 22px;
+    }
+  }

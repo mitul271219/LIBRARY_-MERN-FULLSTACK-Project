@@ -95,7 +95,7 @@ export const AdminUserCategory = () => {
             setLoading(false);
         }, 1500); // 1.5 sec loader
       }
-  }, [dispatch, userToken]);
+  }, [dispatch, userToken, navigate, userAdmin]);
 
 
       // ✅ Spinner UI
@@ -118,7 +118,7 @@ export const AdminUserCategory = () => {
           <div className="row g-4">
 
             {/* LEFT */}
-            <div class="col order-first">
+            <div className="col order-first">
               <div className="form-section">
                 <h3>📚 Add New Category</h3>
 
@@ -155,7 +155,7 @@ export const AdminUserCategory = () => {
 
             {/* RIGHT */}
             {/* <div className="col-12 col-lg-6"> */}
-            <div class="col order-last">
+            <div className="col order-last">
               <div className="table-section">
                 <h4>📖 Category List</h4>
 
@@ -178,7 +178,9 @@ export const AdminUserCategory = () => {
                             <td>{ele.categoryName}</td>
                             <td>
                               <img
-                                src={`http://localhost:3011/upload_Image_Products_&_Category/${ele.categoryImage}`}
+                              // For Localhost API use
+                                // src={`http://localhost:3011/upload_Image_Products_&_Category/${ele.categoryImage}`}
+                                src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${ele.categoryImage}`}
                                 className="table-img"
                                 alt=""
                               />

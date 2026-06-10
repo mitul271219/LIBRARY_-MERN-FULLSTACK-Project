@@ -47,9 +47,12 @@ export const HomePgeLibrary = () => {
   }, [dispatch, userToken]);
 
   // ALL PRODUCTS
-  const allProducts = Array.isArray(state?.libraryBooks?.productGet)
-    ? state?.libraryBooks?.productGet
-    : [];
+  const allProducts = useMemo(() => {
+    return Array.isArray(state?.libraryBooks?.productGet)
+      ? state.libraryBooks.productGet
+      : [];
+  }, [state?.libraryBooks?.productGet]);
+
 
   // CART PRODUCTS IDS
   const cartProductIds =
@@ -309,7 +312,9 @@ export const HomePgeLibrary = () => {
                           <div className="product-image-container">
 
                             <img
-                              src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productThumb}`}
+                            // For localhost API use
+                              // src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productThumb}`}
+                              src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${ele?.productThumb}`}
                               alt={ele?.productName}
                               className="product-image"
                             />

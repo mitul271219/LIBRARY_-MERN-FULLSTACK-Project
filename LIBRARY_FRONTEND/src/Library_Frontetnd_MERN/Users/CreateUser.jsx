@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import "./CreateUser.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUsersApiPostMethod } from "../../ReduxStore/LibrarySlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NavbarLibrary } from "../Navbar_Library/NavbarLibrary";
 import { FooterLibrary } from "../Hom_Page/Footer_Component/FooterLibrary";

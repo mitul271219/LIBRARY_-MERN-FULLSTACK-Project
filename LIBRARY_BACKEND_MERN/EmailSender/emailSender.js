@@ -12,8 +12,8 @@ import nodemailer from "nodemailer";
         secure:false ,
         //   service: "gmail", 
         auth: {
-            user: 'iva.dicki3@ethereal.email',
-            pass: 'YaHuHhd4K6ZeUakeQV'
+            user: 'antone.bogan@ethereal.email',
+            pass: '135nmk1MmtGAETeAyv'
         }
     });
 

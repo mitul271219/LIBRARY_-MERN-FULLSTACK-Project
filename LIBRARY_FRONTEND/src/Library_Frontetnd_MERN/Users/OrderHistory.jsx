@@ -64,7 +64,9 @@ export const OrderHistory = () => {
                 {order.products.map((item) => (
                   <div key={item._id} className="product-row">
                     <img
-                      src={`http://localhost:3011/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
+                      // for localHost API use 
+                      // src={`http://localhost:3011/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
+                      src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
                       alt="product"
                     />
 

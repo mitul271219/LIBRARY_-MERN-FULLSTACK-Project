@@ -72,7 +72,9 @@ export const CartPage = () => {
               <div key={item._id} className="cart-card">
                 {/* IMAGE */}
                 <img
-                  src={`http://localhost:3011/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
+                // for localhost API use
+                  // src={`http://localhost:3011/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
+                  src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${item?.productId?.productThumb}`}
                   alt={item?.productId?.productName}
                   className="cart-image"
                 />
