@@ -1,0 +1,119 @@
+/* Spinner  */
+.loader-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #635d5d;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #6b4f4f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+/* Background with books banner */
+.contact-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: 
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url("https://images.unsplash.com/photo-1507842217343-583bb7270b66");
+  
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+  }
+  
+  /* Glass card */
+  .contact-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 15px;
+  
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+  
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    color: #fff;
+  }
+  
+  /* Heading */
+  .contact-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Inputs */
+  .contact-card input,
+  .contact-card textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+  
+    border: none;
+    border-radius: 8px;
+    outline: none;
+  
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 15px;
+  }
+  
+  /* Placeholder color */
+  .contact-card input::placeholder,
+  .contact-card textarea::placeholder {
+    color: #ddd;
+  }
+  
+  /* Button */
+  .contact-card button {
+    width: 100%;
+    padding: 12px;
+  
+    border: none;
+    border-radius: 8px;
+    background: #ff7b00;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  
+    transition: 0.3s;
+  }
+  
+  .contact-card button:hover {
+    background: #ff9500;
+  }
+  
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    .contact-card {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-card {
+      padding: 15px;
+    }
+  
+    .contact-card h2 {
+      font-size: 20px;
+    }
+  }

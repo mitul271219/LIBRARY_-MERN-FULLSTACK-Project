@@ -1,0 +1,289 @@
+/* PAGE */
+
+.single-product-page {
+    padding: 60px 0;
+  }
+  
+  /* IMAGE CARD */
+  
+  .product-image-card {
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  /* IMAGE */
+  
+  .carousel-item {
+    height: 520px;
+    background: linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2ff
+    );
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    transition: 0.3s ease;
+  }
+  
+  .slider-image:hover {
+    transform: scale(1.03);
+  }
+  
+  /* DETAILS */
+  
+  .single-product-details {
+    padding: 15px 10px 15px 25px;
+  }
+  
+  /* CATEGORY */
+  
+  .category-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  
+  /* TITLE */
+  
+  .product-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111827;
+    margin-bottom: 14px;
+  }
+  
+  /* DESCRIPTION */
+  
+  .product-description {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #64748b;
+    margin-bottom: 28px;
+  }
+  
+  /* PRICE */
+  
+  .price-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  
+  .sale-price,
+  .normal-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .sale-price {
+    color: #2563eb;
+  }
+  
+  .normal-price {
+    color: #111827;
+  }
+  
+  .org-price {
+    color: #94a3b8;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  /* BADGES */
+  
+  .sale-badge,
+  .expired-badge {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .sale-badge {
+    background: #16a34a;
+    color: white;
+  }
+  
+  .expired-badge {
+    background: #dc2626;
+    color: white;
+  }
+  
+  /* DATE BOX */
+  
+  .sale-date-box {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 28px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .sale-date-box p {
+    margin: 0 0 8px;
+    color: #475569;
+    font-size: 14px;
+  }
+  
+  .sale-date-box p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* BUTTONS */
+  
+  .product-action-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  
+  /* READ BUTTON */
+  
+  .read-book-btn {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    border-radius: 14px;
+    background: #0f172a;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  
+  .read-book-btn:hover {
+    transform: translateY(-2px);
+    background: #1e293b;
+  }
+  
+  /* CART BUTTON */
+  
+  .buy-btn {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    border-radius: 14px;
+    background: linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  
+  .buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+  }
+  
+  .already-cart-btn {
+    background: #16a34a !important;
+    cursor: not-allowed;
+  }
+  
+  /* LOADER */
+  
+  .single-loader-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .single-loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #e5e7eb;
+    border-top: 5px solid #2563eb;
+    border-radius: 50%;
+    animation: singleSpin 0.8s linear infinite;
+  } 
+
+
+/* discount */
+  .discount-badge {
+    background: #22c55e;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 12px;
+    display: inline-block;
+  }
+  
+  .price-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+
+  
+  @keyframes singleSpin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* MOBILE */
+  
+  @media (max-width: 991px) {
+    .single-product-details {
+      padding: 20px 0;
+    }
+  
+    .carousel-item {
+      height: 380px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .single-product-page {
+      padding: 25px 0;
+    }
+  
+    .carousel-item {
+      height: 280px;
+    }
+  
+    .product-title {
+      font-size: 1.7rem;
+    }
+  
+    .product-action-buttons {
+      flex-direction: column;
+    }
+  
+    .read-book-btn,
+    .buy-btn {
+      width: 100%;
+    }
+  
+    .product-image-card {
+      padding: 14px;
+    }
+  }
