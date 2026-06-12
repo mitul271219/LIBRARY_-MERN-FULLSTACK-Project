@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./AdminUserAddProducts.css";
-import { NavbarLibrary } from "../Navbar_Library/NavbarLibrary";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,7 +11,6 @@ import {
   updateProductStatusThunk,
 } from "../../ReduxStore/LibrarySlice";
 import { toast } from "react-toastify";
-import { FooterLibrary } from "../Hom_Page/Footer_Component/FooterLibrary";
 
 export const AdminUserAddProducts = () => {
   const state = useSelector((state) => state?.LibraryProject);
@@ -213,9 +211,6 @@ export const AdminUserAddProducts = () => {
 
   return (
     <>
-      
-      <>
-        <NavbarLibrary />
 
         <div className="admin-page">
           {/* ================= FORM SECTION ================= */}
@@ -441,8 +436,7 @@ export const AdminUserAddProducts = () => {
             </div>
           </div>
         </div>
-      </>
-      <FooterLibrary />
+     
     </>
   );
 };

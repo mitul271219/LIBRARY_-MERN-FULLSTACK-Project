@@ -33,7 +33,6 @@ const CreateUser = async (req , res , next) => {
             const userLibData =  await usersLibraryData.create({name , email , password:hash_password})
             if (userLibData) {
               console.log("working properly");
-              
             }
              if (userLibData) {
                 const tokenGenrate = jwt.sign({userId:userLibData._id, useremail: userLibData.email} ,
@@ -109,6 +108,20 @@ const LoginUser = async (req , res , next) => {
         res.status(500).json({msg:"Internal Server Error"});
     }
 };
+
+
+
+// Get_Login_User_Data
+const Login_User_Get = async (req , res) => { 
+  try {
+      const userLoginData = await usersLibraryData.find();
+     res.status(200).json({msg:"Login Get successfully" , userLoginData})
+    } catch (err) {
+      console.error("uploadPic error:", err);
+      res.status(500).json({ msg: "Internal server error" });
+    }
+}
+
 
 
 
@@ -268,6 +281,20 @@ const resetPassword = async (req, res, next) => {
       return res.status(500).json({ msg: "Server error Reset Password" });
     }
   };
+
+
+
+
+  // Get_Contact_data
+const Contact_User_Get = async (req , res) => { 
+  try {
+      const Conatct_Get_Data = await contectForm.find();
+     res.status(200).json({msg:"Contact Get successfully" , Conatct_Get_Data})
+    } catch (err) {
+      console.error("uploadPic error:", err);
+      res.status(500).json({ msg: "Internal server error" });
+    }
+}
 
 
   // contactForm Create 
@@ -764,4 +791,4 @@ const getOrderHistory = async (req, res) => {
 };
 
 
-export{CreateUser , LoginUser , UserTokenCheck , LogoutUserToken , authMiddlewareUser , adminMiddleware , getTokenVerifyData , SendRestLink , contactFormUser , upload_USER_ADMIN_Category , Get_Upload_User_Category , resetPassword , deleteCategory , addProducts , updateProductStatus , GetProductData , multiplesImages , getSingleProduct_Multipleimage  , deleteProduct  ,   addToCart,getCartData , updateCartQuantity , removeCartItem , clearCart , createOrder , getOrderHistory}
+export{CreateUser , LoginUser , Login_User_Get , UserTokenCheck , LogoutUserToken , authMiddlewareUser , adminMiddleware , getTokenVerifyData , SendRestLink , Contact_User_Get , contactFormUser , upload_USER_ADMIN_Category , Get_Upload_User_Category , resetPassword , deleteCategory , addProducts , updateProductStatus , GetProductData , multiplesImages , getSingleProduct_Multipleimage  , deleteProduct  ,   addToCart,getCartData , updateCartQuantity , removeCartItem , clearCart , createOrder , getOrderHistory}

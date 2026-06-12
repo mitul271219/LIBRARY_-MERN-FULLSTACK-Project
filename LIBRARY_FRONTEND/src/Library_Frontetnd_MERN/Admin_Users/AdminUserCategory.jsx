@@ -5,10 +5,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { NavbarLibrary } from "../Navbar_Library/NavbarLibrary";
 import { AdminUserCategoryGET, AdminUserCategoryPost, deleteMernAdminCategories } from "../../ReduxStore/LibrarySlice";
 import './AdminUsercategory.css';
-import { FooterLibrary } from "../Hom_Page/Footer_Component/FooterLibrary";
 
 export const AdminUserCategory = () => {
 
@@ -110,7 +108,6 @@ export const AdminUserCategory = () => {
 
   return (
     <>
-      <NavbarLibrary />
 
       <div className="admin-category-page">
         <div className="container py-4">
@@ -213,7 +210,6 @@ export const AdminUserCategory = () => {
 
         </div>
       </div>
-      <FooterLibrary/>
     </>
   );
 };

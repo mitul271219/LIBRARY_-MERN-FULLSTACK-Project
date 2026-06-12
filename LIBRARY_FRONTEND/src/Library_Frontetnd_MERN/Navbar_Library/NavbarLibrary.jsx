@@ -70,21 +70,12 @@ export const NavbarLibrary = () => {
             Contact
           </NavLink>
 
-          <div className="dropdown-wrapper">
-            <button className="dropdown-btn">
-              Admin
-            </button>
 
-            <div className="dropdown-menu-custom">
-              <NavLink to="/adminUsercateGory">
-               Add Category
-              </NavLink>
+          <NavLink to="/admin" className="nav-item">
+            Admin Panel
+          </NavLink>
 
-              <NavLink to="/adminUserAddProducts">
-               Add Products
-              </NavLink>
-            </div>
-          </div>
+          
         </div>
 
         {/* RIGHT SIDE */}
@@ -173,20 +164,11 @@ export const NavbarLibrary = () => {
           Contact
         </NavLink>
 
-        <NavLink
-          to="/adminUsercateGory"
-          onClick={() => setMobileMenu(false)}
-        >
-         Add Category
+      
+        <NavLink to="/admin" onClick={() => setMobileMenu(false)}>
+            Admin Panel
         </NavLink>
 
-        <NavLink
-          to="/adminUserAddProducts"
-          onClick={() => setMobileMenu(false)}
-        >
-         Add Products
-        </NavLink>
-        
 
         {!userToken && (
           <NavLink

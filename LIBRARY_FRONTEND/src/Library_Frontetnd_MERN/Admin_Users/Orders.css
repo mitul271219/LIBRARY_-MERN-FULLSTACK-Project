@@ -1,0 +1,124 @@
+.orders-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 15px;
+  }
+  
+  .orders-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #222;
+  }
+  
+  .order-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .order-date {
+    color: gray;
+    font-size: 14px;
+  }
+  
+  .payment-badge {
+    background: #28a745;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .address-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .products-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .product-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+  }
+  
+  .product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .product-info h5 {
+    margin: 0;
+  }
+  
+  .product-info p {
+    color: gray;
+    margin-top: 5px;
+  }
+  
+  .order-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .order-footer h3 {
+    color: #e63946;
+  }
+  
+  .empty-orders {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  /* Mobile Responsive */
+  
+  @media (max-width: 768px) {
+    .order-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .order-footer {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .product-item {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .product-item img {
+      width: 120px;
+      height: 120px;
+    }
+  }

@@ -1,5 +1,5 @@
 import express from 'express'
-import { addProducts, addToCart, adminMiddleware, authMiddlewareUser, clearCart, contactFormUser, createOrder, CreateUser, deleteCategory, deleteProduct, Get_Upload_User_Category, getCartData, getOrderHistory, GetProductData, getSingleProduct_Multipleimage, LoginUser, LogoutUserToken, multiplesImages, removeCartItem, resetPassword, SendRestLink, updateCartQuantity, updateProductStatus, upload_USER_ADMIN_Category, UserTokenCheck } from '../Controler/UserControler.js';
+import { addProducts, addToCart, adminMiddleware, authMiddlewareUser, clearCart, Contact_User_Get, contactFormUser, createOrder, CreateUser, deleteCategory, deleteProduct, Get_Upload_User_Category, getCartData, getOrderHistory, GetProductData, getSingleProduct_Multipleimage, Login_User_Get, LoginUser, LogoutUserToken, multiplesImages, removeCartItem, resetPassword, SendRestLink, updateCartQuantity, updateProductStatus, upload_USER_ADMIN_Category, UserTokenCheck } from '../Controler/UserControler.js';
 import multer from "multer";
 import shortid from "shortid";
 import path from "path";
@@ -38,11 +38,13 @@ const multiple_Image = multer({
 // userRouter.route('/about').get()
 userRouter.route('/createUsers').post(CreateUser)
 userRouter.route('/loginUsers').post(LoginUser)
+userRouter.route('/Login&SignupUsersGet').get(Login_User_Get)
 userRouter.route('/tokenUserCheck').post(UserTokenCheck)
 userRouter.route('/userLogout').post(LogoutUserToken)
 userRouter.route('/senderestlink').post(SendRestLink)
 userRouter.route('/resetpassword').post(resetPassword)
 userRouter.route('/userContactForms').post( authMiddlewareUser , contactFormUser)
+userRouter.route('/userContactGet').get(Contact_User_Get)
 // multer Routes (upload Image)
 userRouter.route('/adminUserCategory').post(uploadCategoryData.single('categoryImage') , upload_USER_ADMIN_Category)
 // userRouter.route('/adminUserCategory').get(authMiddlewareUser , adminMiddleware , Get_Upload_User_Category)

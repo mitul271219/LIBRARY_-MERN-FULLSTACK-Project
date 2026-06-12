@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { userTokenCheckPostMethod } from "./ReduxStore/LibrarySlice";
 import { HomePgeLibrary } from "./Library_Frontetnd_MERN/Hom_Page/HomePgeLibrary";
-import { ContactFormLibrary } from "./Library_Frontetnd_MERN/Users/ContactFormLibrary";
+// import { ContactFormLibrary } from "./Library_Frontetnd_MERN/Users/ContactFormLibrary";
 import { AdminUserCategory } from "./Library_Frontetnd_MERN/Admin_Users/AdminUserCategory";
 import { UserForgetPassword } from "./Library_Frontetnd_MERN/Users/UserForgetPassword";
 import { UserResetPassLink } from "./Library_Frontetnd_MERN/Users/UserResetPassLink";
@@ -20,6 +20,11 @@ import { OrderPage } from "./Library_Frontetnd_MERN/Users/OrderPage";
 import { OrderHistory } from "./Library_Frontetnd_MERN/Users/OrderHistory";
 import { AboutLibrary } from "./Library_Frontetnd_MERN/Hom_Page/About_Component/AboutLibrary";
 import { NotFound } from "./Library_Frontetnd_MERN/404NotFoundPage/NotFound";
+import { AdminLayout } from "./Library_Frontetnd_MERN/Admin_Users/AdminLayout";
+import { Users } from "./Library_Frontetnd_MERN/Admin_Users/Users";
+import { Orders } from "./Library_Frontetnd_MERN/Admin_Users/Orders";
+import { Contacts } from "./Library_Frontetnd_MERN/Admin_Users/Contacts";
+import { ContactLibraryForm } from "./Library_Frontetnd_MERN/Users/ContactLibraryForm";
 
 
 function App() {
@@ -88,13 +93,23 @@ function App() {
         <Route path="/loginUser" element={<LoginUser />} />
         <Route path="/forgotPasswordUser" element={<UserForgetPassword/>} />
         <Route path="/userpassreset/:rtoken" element={<UserResetPassLink />} />
-        <Route path="/contactFormLibrary" element={<ContactFormLibrary />} />
-        <Route path="/adminUsercateGory" element={<AdminUserCategory />} />
-        <Route path="/adminUserAddProducts" element={<AdminUserAddProducts />} />
+        {/* <Route path="/contactFormLibrary" element={<ContactFormLibrary />} /> */}
+        <Route path="/contactFormLibrary" element={<ContactLibraryForm />} />
         <Route path="/cartPage" element={<CartPage />} />
         <Route path="/paymentSuccess" element={<PaymentSuccess />}/>
         <Route path="/order" element={<OrderPage />}/>
         <Route path="/orderHistory" element={<OrderHistory />} />
+        {/* Admin Route  */}
+        <Route path="/admin" element={<AdminLayout />}>
+           <Route index element={<Users />} />
+          {/* <Route path="users" element={<Users />} /> */}
+          <Route path="orders" element={<Orders />} />
+          <Route path="contacts" element={<Contacts />} />
+           <Route path="categories" element={<AdminUserCategory />} />
+          <Route path="products" element={<AdminUserAddProducts />} /> 
+        </Route>
+        {/* <Route path="/adminUsercateGory" element={<AdminUserCategory />} />
+        <Route path="/adminUserAddProducts" element={<AdminUserAddProducts />} /> */}
          {/* 404 PAGE (IMPORTANT) */}
          <Route path="*" element={<NotFound />} />
       </Routes>

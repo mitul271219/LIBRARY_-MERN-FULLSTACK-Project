@@ -313,7 +313,7 @@ export const HomePgeLibrary = () => {
 
                             <img
                             // For localhost API use
-                              // src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productThumb}`}
+                              //  src={`http://localhost:3011/upload_Image_Products_&_Category/${ele?.productThumb}`}
                               src={`https://library-mern-fullstack-project.onrender.com/upload_Image_Products_&_Category/${ele?.productThumb}`}
                               alt={ele?.productName}
                               className="product-image"
