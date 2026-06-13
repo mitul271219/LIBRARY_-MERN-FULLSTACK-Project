@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UserConatctGET } from "../../ReduxStore/LibrarySlice";
+import { DeleteContactThunk, UserConatctGET } from "../../ReduxStore/LibrarySlice";
 import "./Contacts.css";
+import { toast } from "react-toastify";
 
 export const Contacts = () => {
   const dispatch = useDispatch();
@@ -10,21 +11,24 @@ export const Contacts = () => {
     (state) => state.LibraryProject
   );
 
+
+
+  const handleDelete = (id) => {
+
+      dispatch(DeleteContactThunk(id)).then((res) => {
+        if (res?.meta?.requestStatus === "fulfilled") {
+              toast.error("User Delete SuccessFully");
+             dispatch(UserConatctGET());
+        }
+      })
+    
+  };
+
+
   useEffect(() => {
     dispatch(UserConatctGET());
   }, [dispatch]);
 
-  const handleDelete = (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this contact?"
-    );
-
-    if (confirmDelete) {
-      console.log("Delete Contact:", id);
-
-      // dispatch(DeleteContactThunk(id))
-    }
-  };
 
   return (
     <div className="contacts-container">

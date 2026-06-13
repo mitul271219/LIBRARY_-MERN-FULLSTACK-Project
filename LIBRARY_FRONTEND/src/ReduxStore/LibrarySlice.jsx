@@ -1,501 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const createUsersApiPostMethod = createAsyncThunk(
-  "createUsersApiPostMethod",
-  async (signupData, { rejectWithValue }) => {
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/createUsers`,
-        signupData
-      );
-      return await res.data;
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-
-
-export const loginUsersApiPostMethod = createAsyncThunk(
-  "loginUsersApiPostMethod",
-  async (loginData, { rejectWithValue }) => {
-    // console.log(loginData);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/loginUsers`,
-        loginData
-      );
-      return await res.data;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
-
-
-
-export const Admin_Login_Signup_GET = createAsyncThunk(
-  "Admin_Login_Signup_GET",
-  async (userToken, { rejectWithValue }) => {
-     console.log(userToken);
-    try {
-      const res = await axios.get("http://localhost:3011/Login&SignupUsersGet", {
-        headers: {
-          Authorization: userToken,
-        },
-      });
-      return res.data; // array of categories
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-
-
-export const userTokenCheckPostMethod = createAsyncThunk(
-  "userTokenCheckPostMethod",
-  async (tokens, { rejectWithValue }) => {
-    console.log(tokens);
-
-    try {
-      const res = await axios.post(`http://localhost:3011/tokenUserCheck`, {
-        tokens: tokens,
-      });
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const UserLogOutPost = createAsyncThunk(
-  "UserLogOutPost",
-  async (tokens, { rejectWithValue }) => {
-    // console.log(tokens);
-    try {
-      const res = await axios.post(`http://localhost:3011/userLogout`, {
-        tokensData: tokens,
-      });
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const UserForgotResetPassPost = createAsyncThunk(
-  "UserForgotResetPassPost",
-  async (userEmail, { rejectWithValue }) => {
-    // console.log(userEmail);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/senderestlink`,
-        userEmail
-      );
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const UserResetPasswordPost = createAsyncThunk(
-  "UserResetPasswordPost",
-  async (user, { rejectWithValue }) => {
-    // console.log(user);
-    try {
-      const res = await axios.post(`http://localhost:3011/resetpassword`, {
-        resetToken: user.reset_token,
-        user_NewPass: user.passwordreset,
-      });
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-
-
-export const UserConatctGET = createAsyncThunk(
-  "UserConatctGET",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await axios.get(
-        "http://localhost:3011/userContactGet"
-      );
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(
-        err.response?.data || err.message
-      );
-    }
-  }
-);
-
-
-export const UserContactPost = createAsyncThunk(
-  "UserLogOutPost",
-  async (userFormData, { rejectWithValue }) => {
-    // console.log(userFormData);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/userContactForms`,
-        userFormData.contactForm,
-        {
-          headers: { Authorization: userFormData?.userToken },
-        }
-      );
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const AdminUserCategoryPost = createAsyncThunk(
-  "postMernAdminAddCategory",
-  async (formData, { rejectWithValue }) => {
-    console.log(formData);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/adminUserCategory`,
-        formData
-      );
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const AdminUserCategoryGET = createAsyncThunk(
-  "getMernAdminAllCategories",
-  async (userToken, { rejectWithValue }) => {
-    //  console.log(userToken);
-    try {
-      const res = await axios.get("http://localhost:3011/adminUserCategory", {
-        headers: {
-          Authorization: userToken,
-        },
-      });
-      return res.data; // array of categories
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-export const deleteMernAdminCategories = createAsyncThunk(
-  "deleteMernAdminCategories",
-  async (id, { rejectWithValue }) => {
-    // console.log(id);
-    try {
-      const res = await axios.delete(
-        `http://localhost:3011/deleteCategory/${id}`
-      );
-      return {
-        ids: id,
-        deletRes: res.data,
-      };
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-export const postAddProduct = createAsyncThunk(
-  "postAddProduct",
-  async (formData, { rejectWithValue }) => {
-    console.log(formData);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/addProducts`,
-        formData
-      );
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const updateProductStatusThunk = createAsyncThunk(
-  "updateProductStatusThunk",
-  async ({ id, status }, { rejectWithValue }) => {
-    // console.log(id , status);
-    try {
-      const res = await axios.put(
-        `http://localhost:3011/updateProductStatus/${id}`,
-        {
-          productStatus: status,
-        }
-      );
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-export const getAddProduct = createAsyncThunk(
-  "getAddProduct",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await axios.get("http://localhost:3011/getProducts");
-      return res.data; // array of categories
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-export const deleteProductThunk = createAsyncThunk(
-  "deleteProductThunk",
-  async (id, { rejectWithValue }) => {
-    console.log(id);
-
-    try {
-      const res = await axios.delete(
-        `http://localhost:3011/deleteProduct/${id}`
-      );
-
-      return {
-        id: id,
-        response: res.data,
-      };
-    } catch (err) {
-      return rejectWithValue(err.response?.data || err.message);
-    }
-  }
-);
-
-export const postMutipleImages = createAsyncThunk(
-  "postMutipleImages",
-  async (formDataUser, { rejectWithValue }) => {
-    console.log(formDataUser);
-    try {
-      const res = await axios.post(
-        `http://localhost:3011/uploadMulImages/${formDataUser.ismodelOpen}`,
-        formDataUser.formData
-      );
-      return res; // success
-    } catch (err) {
-      // Pass backend error message to the rejected action
-      return rejectWithValue(err);
-    }
-  }
-);
-
-// getSingle or Multiple image GET
-export const getSingleProductThunk = createAsyncThunk(
-  "single/product",
-  async (id, thunkAPI) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3011/getSingleProduct/${id}`
-      );
-      return response.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err.response.data);
-    }
-  }
-);
-
-// Add to Cart
-export const addCartThunk = createAsyncThunk(
-  "addCartThunk",
-  async (data, { rejectWithValue }) => {
-    console.log(data);
-
-    try {
-      const res = await axios.post(
-        "http://localhost:3011/addCart",
-        {
-          productId: data.productId,
-        },
-        {
-          headers: {
-            Authorization: data.token,
-          },
-        }
-      );
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data);
-    }
-  }
-);
-
-// GET Cart
-export const getCartThunk = createAsyncThunk(
-  "getCartThunk",
-  async (token, { rejectWithValue }) => {
-    try {
-      const res = await axios.get("http://localhost:3011/getCart", {
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data);
-    }
-  }
-);
-
-// UPDATE QUANTITY
-export const updateCartThunk = createAsyncThunk(
-  "updateCartThunk",
-  async (data, { rejectWithValue }) => {
-    try {
-      const res = await axios.put(
-        `http://localhost:3011/updateCart/${data.cartId}`,
-        {
-          type: data.type,
-        },
-        {
-          headers: {
-            Authorization: data.token,
-          },
-        }
-      );
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data);
-    }
-  }
-);
-
-// REMOVE SINGLE CART ITEM
-export const removeCartThunk = createAsyncThunk(
-  "removeCartThunk",
-  async (data, { rejectWithValue }) => {
-    try {
-      const res = await axios.delete(
-        `http://localhost:3011/removeCart/${data.cartId}`,
-        {
-          headers: {
-            Authorization: data.token,
-          },
-        }
-      );
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data);
-    }
-  }
-);
-
-// CLEAR ALL CART
-export const clearCartThunk = createAsyncThunk(
-  "clearCartThunk",
-  async (token, { rejectWithValue }) => {
-    try {
-      const res = await axios.delete("http://localhost:3011/clearCart", {
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.response?.data);
-    }
-  }
-);
-
-// CREATE ORDER
-export const createOrderThunk = createAsyncThunk(
-  "createOrderThunk",
-
-  async (data, { rejectWithValue }) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3011/createOrder",
-
-        {
-          products: data.products,
-          address: data.address,
-          paymentMethod: data.paymentMethod,
-          totalPrice: data.totalPrice,
-        },
-
-        {
-          headers: {
-            Authorization: data.token,
-          },
-        }
-      );
-
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
-
-
-
-// ORDER HISTORY
-export const getOrderHistoryThunk = createAsyncThunk(
-  "getOrderHistoryThunk",
-
-  async (token, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(
-        "http://localhost:3011/orderHistory",
-
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-// deploy apis 
-
 // export const createUsersApiPostMethod = createAsyncThunk(
 //   "createUsersApiPostMethod",
 //   async (signupData, { rejectWithValue }) => {
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/createUsers`,
+//         `http://localhost:3011/createUsers`,
 //         signupData
 //       );
 //       return await res.data;
@@ -514,7 +25,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     // console.log(loginData);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/loginUsers`,
+//         `http://localhost:3011/loginUsers`,
 //         loginData
 //       );
 //       return await res.data;
@@ -525,12 +36,13 @@ export const getOrderHistoryThunk = createAsyncThunk(
 // );
 
 
+
 // export const Admin_Login_Signup_GET = createAsyncThunk(
 //   "Admin_Login_Signup_GET",
 //   async (userToken, { rejectWithValue }) => {
 //      console.log(userToken);
 //     try {
-//       const res = await axios.get("https://library-mern-fullstack-project.onrender.com/Login&SignupUsersGet", {
+//       const res = await axios.get("http://localhost:3011/Login&SignupUsersGet", {
 //         headers: {
 //           Authorization: userToken,
 //         },
@@ -543,13 +55,37 @@ export const getOrderHistoryThunk = createAsyncThunk(
 // );
 
 
+// export const DeleteUserThunk = createAsyncThunk(
+//   "DeleteUserThunk",
+//   async (id, { rejectWithValue }) => {
+//     try {
+
+//       const res = await axios.delete(
+//         `http://localhost:3011/deleteUser/${id}`
+//       );
+
+//       return {
+//         id,
+//         response: res.data,
+//       };
+
+//     } catch (err) {
+//       return rejectWithValue(
+//         err.response?.data || err.message
+//       );
+//     }
+//   }
+// );
+
+
+
 // export const userTokenCheckPostMethod = createAsyncThunk(
 //   "userTokenCheckPostMethod",
 //   async (tokens, { rejectWithValue }) => {
 //     console.log(tokens);
 
 //     try {
-//       const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/tokenUserCheck`, {
+//       const res = await axios.post(`http://localhost:3011/tokenUserCheck`, {
 //         tokens: tokens,
 //       });
 //       return res; // success
@@ -565,7 +101,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (tokens, { rejectWithValue }) => {
 //     // console.log(tokens);
 //     try {
-//       const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/userLogout`, {
+//       const res = await axios.post(`http://localhost:3011/userLogout`, {
 //         tokensData: tokens,
 //       });
 //       return res; // success
@@ -582,7 +118,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     // console.log(userEmail);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/senderestlink`,
+//         `http://localhost:3011/senderestlink`,
 //         userEmail
 //       );
 //       return res; // success
@@ -598,7 +134,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (user, { rejectWithValue }) => {
 //     // console.log(user);
 //     try {
-//       const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/resetpassword`, {
+//       const res = await axios.post(`http://localhost:3011/resetpassword`, {
 //         resetToken: user.reset_token,
 //         user_NewPass: user.passwordreset,
 //       });
@@ -611,13 +147,13 @@ export const getOrderHistoryThunk = createAsyncThunk(
 // );
 
 
-
+// // Get Conatct
 // export const UserConatctGET = createAsyncThunk(
 //   "UserConatctGET",
 //   async (_, { rejectWithValue }) => {
 //     try {
 //       const res = await axios.get(
-//         "https://library-mern-fullstack-project.onrender.com/userContactGet"
+//         "http://localhost:3011/userContactGet"
 //       );
 
 //       return res.data;
@@ -629,6 +165,35 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   }
 // );
 
+// // DeleteContact
+// export const DeleteContactThunk = createAsyncThunk(
+//   "DeleteContactThunk",
+
+//   async (id, { rejectWithValue }) => {
+
+//     try {
+
+//       const res = await axios.delete(
+//         `http://localhost:3011/deleteContact/${id}`
+//       );
+
+//       return {
+//         id,
+//         response: res.data,
+//       };
+
+//     } catch (err) {
+
+//       return rejectWithValue(
+//         err.response?.data || err.message
+//       );
+
+//     }
+//   }
+// );
+
+
+
 
 // export const UserContactPost = createAsyncThunk(
 //   "UserLogOutPost",
@@ -636,7 +201,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     // console.log(userFormData);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/userContactForms`,
+//         `http://localhost:3011/userContactForms`,
 //         userFormData.contactForm,
 //         {
 //           headers: { Authorization: userFormData?.userToken },
@@ -656,7 +221,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     console.log(formData);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/adminUserCategory`,
+//         `http://localhost:3011/adminUserCategory`,
 //         formData
 //       );
 //       return res; // success
@@ -672,7 +237,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (userToken, { rejectWithValue }) => {
 //     //  console.log(userToken);
 //     try {
-//       const res = await axios.get("https://library-mern-fullstack-project.onrender.com/adminUserCategory", {
+//       const res = await axios.get("http://localhost:3011/adminUserCategory", {
 //         headers: {
 //           Authorization: userToken,
 //         },
@@ -690,7 +255,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     // console.log(id);
 //     try {
 //       const res = await axios.delete(
-//         `https://library-mern-fullstack-project.onrender.com/deleteCategory/${id}`
+//         `http://localhost:3011/deleteCategory/${id}`
 //       );
 //       return {
 //         ids: id,
@@ -708,7 +273,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     console.log(formData);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/addProducts`,
+//         `http://localhost:3011/addProducts`,
 //         formData
 //       );
 //       return res; // success
@@ -725,7 +290,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     // console.log(id , status);
 //     try {
 //       const res = await axios.put(
-//         `https://library-mern-fullstack-project.onrender.com/updateProductStatus/${id}`,
+//         `http://localhost:3011/updateProductStatus/${id}`,
 //         {
 //           productStatus: status,
 //         }
@@ -741,7 +306,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   "getAddProduct",
 //   async (_, { rejectWithValue }) => {
 //     try {
-//       const res = await axios.get("https://library-mern-fullstack-project.onrender.com/getProducts");
+//       const res = await axios.get("http://localhost:3011/getProducts");
 //       return res.data; // array of categories
 //     } catch (err) {
 //       return rejectWithValue(err.response?.data || err.message);
@@ -756,7 +321,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 
 //     try {
 //       const res = await axios.delete(
-//         `https://library-mern-fullstack-project.onrender.com/deleteProduct/${id}`
+//         `http://localhost:3011/deleteProduct/${id}`
 //       );
 
 //       return {
@@ -775,7 +340,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     console.log(formDataUser);
 //     try {
 //       const res = await axios.post(
-//         `https://library-mern-fullstack-project.onrender.com/uploadMulImages/${formDataUser.ismodelOpen}`,
+//         `http://localhost:3011/uploadMulImages/${formDataUser.ismodelOpen}`,
 //         formDataUser.formData
 //       );
 //       return res; // success
@@ -792,7 +357,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (id, thunkAPI) => {
 //     try {
 //       const response = await axios.get(
-//         `https://library-mern-fullstack-project.onrender.com/getSingleProduct/${id}`
+//         `http://localhost:3011/getSingleProduct/${id}`
 //       );
 //       return response.data;
 //     } catch (err) {
@@ -809,7 +374,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 
 //     try {
 //       const res = await axios.post(
-//         "https://library-mern-fullstack-project.onrender.com/addCart",
+//         "http://localhost:3011/addCart",
 //         {
 //           productId: data.productId,
 //         },
@@ -832,7 +397,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   "getCartThunk",
 //   async (token, { rejectWithValue }) => {
 //     try {
-//       const res = await axios.get("https://library-mern-fullstack-project.onrender.com/getCart", {
+//       const res = await axios.get("http://localhost:3011/getCart", {
 //         headers: {
 //           Authorization: token,
 //         },
@@ -851,7 +416,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (data, { rejectWithValue }) => {
 //     try {
 //       const res = await axios.put(
-//         `https://library-mern-fullstack-project.onrender.com/updateCart/${data.cartId}`,
+//         `http://localhost:3011/updateCart/${data.cartId}`,
 //         {
 //           type: data.type,
 //         },
@@ -875,7 +440,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (data, { rejectWithValue }) => {
 //     try {
 //       const res = await axios.delete(
-//         `https://library-mern-fullstack-project.onrender.com/removeCart/${data.cartId}`,
+//         `http://localhost:3011/removeCart/${data.cartId}`,
 //         {
 //           headers: {
 //             Authorization: data.token,
@@ -895,7 +460,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   "clearCartThunk",
 //   async (token, { rejectWithValue }) => {
 //     try {
-//       const res = await axios.delete("https://library-mern-fullstack-project.onrender.com/clearCart", {
+//       const res = await axios.delete("http://localhost:3011/clearCart", {
 //         headers: {
 //           Authorization: token,
 //         },
@@ -915,7 +480,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (data, { rejectWithValue }) => {
 //     try {
 //       const response = await axios.post(
-//         "https://library-mern-fullstack-project.onrender.com/createOrder",
+//         "http://localhost:3011/createOrder",
 
 //         {
 //           products: data.products,
@@ -947,7 +512,7 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //   async (token, { rejectWithValue }) => {
 //     try {
 //       const response = await axios.get(
-//         "https://library-mern-fullstack-project.onrender.com/orderHistory",
+//         "http://localhost:3011/orderHistory",
 
 //         {
 //           headers: {
@@ -962,6 +527,546 @@ export const getOrderHistoryThunk = createAsyncThunk(
 //     }
 //   }
 // );
+
+
+
+
+
+
+
+
+
+
+
+
+
+// deploy apis 
+
+export const createUsersApiPostMethod = createAsyncThunk(
+  "createUsersApiPostMethod",
+  async (signupData, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/createUsers`,
+        signupData
+      );
+      return await res.data;
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+
+
+export const loginUsersApiPostMethod = createAsyncThunk(
+  "loginUsersApiPostMethod",
+  async (loginData, { rejectWithValue }) => {
+    // console.log(loginData);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/loginUsers`,
+        loginData
+      );
+      return await res.data;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+
+export const Admin_Login_Signup_GET = createAsyncThunk(
+  "Admin_Login_Signup_GET",
+  async (userToken, { rejectWithValue }) => {
+     console.log(userToken);
+    try {
+      const res = await axios.get("https://library-mern-fullstack-project.onrender.com/Login&SignupUsersGet", {
+        headers: {
+          Authorization: userToken,
+        },
+      });
+      return res.data; // array of categories
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+
+
+export const DeleteUserThunk = createAsyncThunk(
+  "DeleteUserThunk",
+  async (id, { rejectWithValue }) => {
+    try {
+
+      const res = await axios.delete(
+        `https://library-mern-fullstack-project.onrender.com/deleteUser/${id}`
+      );
+
+      return {
+        id,
+        response: res.data,
+      };
+
+    } catch (err) {
+      return rejectWithValue(
+        err.response?.data || err.message
+      );
+    }
+  }
+);
+
+
+export const userTokenCheckPostMethod = createAsyncThunk(
+  "userTokenCheckPostMethod",
+  async (tokens, { rejectWithValue }) => {
+    console.log(tokens);
+
+    try {
+      const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/tokenUserCheck`, {
+        tokens: tokens,
+      });
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const UserLogOutPost = createAsyncThunk(
+  "UserLogOutPost",
+  async (tokens, { rejectWithValue }) => {
+    // console.log(tokens);
+    try {
+      const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/userLogout`, {
+        tokensData: tokens,
+      });
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const UserForgotResetPassPost = createAsyncThunk(
+  "UserForgotResetPassPost",
+  async (userEmail, { rejectWithValue }) => {
+    // console.log(userEmail);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/senderestlink`,
+        userEmail
+      );
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const UserResetPasswordPost = createAsyncThunk(
+  "UserResetPasswordPost",
+  async (user, { rejectWithValue }) => {
+    // console.log(user);
+    try {
+      const res = await axios.post(`https://library-mern-fullstack-project.onrender.com/resetpassword`, {
+        resetToken: user.reset_token,
+        user_NewPass: user.passwordreset,
+      });
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+
+
+export const UserConatctGET = createAsyncThunk(
+  "UserConatctGET",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(
+        "https://library-mern-fullstack-project.onrender.com/userContactGet"
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(
+        err.response?.data || err.message
+      );
+    }
+  }
+);
+
+
+export const DeleteContactThunk = createAsyncThunk(
+  "DeleteContactThunk",
+
+  async (id, { rejectWithValue }) => {
+
+    try {
+
+      const res = await axios.delete(
+        `https://library-mern-fullstack-project.onrender.com/deleteContact/${id}`
+      );
+
+      return {
+        id,
+        response: res.data,
+      };
+
+    } catch (err) {
+
+      return rejectWithValue(
+        err.response?.data || err.message
+      );
+
+    }
+  }
+);
+
+
+
+
+export const UserContactPost = createAsyncThunk(
+  "UserLogOutPost",
+  async (userFormData, { rejectWithValue }) => {
+    // console.log(userFormData);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/userContactForms`,
+        userFormData.contactForm,
+        {
+          headers: { Authorization: userFormData?.userToken },
+        }
+      );
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const AdminUserCategoryPost = createAsyncThunk(
+  "postMernAdminAddCategory",
+  async (formData, { rejectWithValue }) => {
+    console.log(formData);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/adminUserCategory`,
+        formData
+      );
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const AdminUserCategoryGET = createAsyncThunk(
+  "getMernAdminAllCategories",
+  async (userToken, { rejectWithValue }) => {
+    //  console.log(userToken);
+    try {
+      const res = await axios.get("https://library-mern-fullstack-project.onrender.com/adminUserCategory", {
+        headers: {
+          Authorization: userToken,
+        },
+      });
+      return res.data; // array of categories
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const deleteMernAdminCategories = createAsyncThunk(
+  "deleteMernAdminCategories",
+  async (id, { rejectWithValue }) => {
+    // console.log(id);
+    try {
+      const res = await axios.delete(
+        `https://library-mern-fullstack-project.onrender.com/deleteCategory/${id}`
+      );
+      return {
+        ids: id,
+        deletRes: res.data,
+      };
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const postAddProduct = createAsyncThunk(
+  "postAddProduct",
+  async (formData, { rejectWithValue }) => {
+    console.log(formData);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/addProducts`,
+        formData
+      );
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const updateProductStatusThunk = createAsyncThunk(
+  "updateProductStatusThunk",
+  async ({ id, status }, { rejectWithValue }) => {
+    // console.log(id , status);
+    try {
+      const res = await axios.put(
+        `https://library-mern-fullstack-project.onrender.com/updateProductStatus/${id}`,
+        {
+          productStatus: status,
+        }
+      );
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const getAddProduct = createAsyncThunk(
+  "getAddProduct",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get("https://library-mern-fullstack-project.onrender.com/getProducts");
+      return res.data; // array of categories
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const deleteProductThunk = createAsyncThunk(
+  "deleteProductThunk",
+  async (id, { rejectWithValue }) => {
+    console.log(id);
+
+    try {
+      const res = await axios.delete(
+        `https://library-mern-fullstack-project.onrender.com/deleteProduct/${id}`
+      );
+
+      return {
+        id: id,
+        response: res.data,
+      };
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const postMutipleImages = createAsyncThunk(
+  "postMutipleImages",
+  async (formDataUser, { rejectWithValue }) => {
+    console.log(formDataUser);
+    try {
+      const res = await axios.post(
+        `https://library-mern-fullstack-project.onrender.com/uploadMulImages/${formDataUser.ismodelOpen}`,
+        formDataUser.formData
+      );
+      return res; // success
+    } catch (err) {
+      // Pass backend error message to the rejected action
+      return rejectWithValue(err);
+    }
+  }
+);
+
+// getSingle or Multiple image GET
+export const getSingleProductThunk = createAsyncThunk(
+  "single/product",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `https://library-mern-fullstack-project.onrender.com/getSingleProduct/${id}`
+      );
+      return response.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
+  }
+);
+
+// Add to Cart
+export const addCartThunk = createAsyncThunk(
+  "addCartThunk",
+  async (data, { rejectWithValue }) => {
+    console.log(data);
+
+    try {
+      const res = await axios.post(
+        "https://library-mern-fullstack-project.onrender.com/addCart",
+        {
+          productId: data.productId,
+        },
+        {
+          headers: {
+            Authorization: data.token,
+          },
+        }
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data);
+    }
+  }
+);
+
+// GET Cart
+export const getCartThunk = createAsyncThunk(
+  "getCartThunk",
+  async (token, { rejectWithValue }) => {
+    try {
+      const res = await axios.get("https://library-mern-fullstack-project.onrender.com/getCart", {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data);
+    }
+  }
+);
+
+// UPDATE QUANTITY
+export const updateCartThunk = createAsyncThunk(
+  "updateCartThunk",
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await axios.put(
+        `https://library-mern-fullstack-project.onrender.com/updateCart/${data.cartId}`,
+        {
+          type: data.type,
+        },
+        {
+          headers: {
+            Authorization: data.token,
+          },
+        }
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data);
+    }
+  }
+);
+
+// REMOVE SINGLE CART ITEM
+export const removeCartThunk = createAsyncThunk(
+  "removeCartThunk",
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await axios.delete(
+        `https://library-mern-fullstack-project.onrender.com/removeCart/${data.cartId}`,
+        {
+          headers: {
+            Authorization: data.token,
+          },
+        }
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data);
+    }
+  }
+);
+
+// CLEAR ALL CART
+export const clearCartThunk = createAsyncThunk(
+  "clearCartThunk",
+  async (token, { rejectWithValue }) => {
+    try {
+      const res = await axios.delete("https://library-mern-fullstack-project.onrender.com/clearCart", {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data);
+    }
+  }
+);
+
+// CREATE ORDER
+export const createOrderThunk = createAsyncThunk(
+  "createOrderThunk",
+
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        "https://library-mern-fullstack-project.onrender.com/createOrder",
+
+        {
+          products: data.products,
+          address: data.address,
+          paymentMethod: data.paymentMethod,
+          totalPrice: data.totalPrice,
+        },
+
+        {
+          headers: {
+            Authorization: data.token,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+
+
+// ORDER HISTORY
+export const getOrderHistoryThunk = createAsyncThunk(
+  "getOrderHistoryThunk",
+
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        "https://library-mern-fullstack-project.onrender.com/orderHistory",
+
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 
 
@@ -1039,6 +1144,19 @@ const library = createSlice({
     });
 
 
+    // ================= User Delete Data  =================
+    builder.addCase(
+      DeleteUserThunk.fulfilled,
+      (state, action) => {
+    
+        state.User_SignUP_Login_Data.userLoginData =
+          state.User_SignUP_Login_Data.userLoginData.filter(
+            (user) => user._id !== action.payload.id
+          );
+      }
+    );
+
+
 
 
      // ================= User Get Conatct All Data  =================
@@ -1064,6 +1182,17 @@ const library = createSlice({
       state.Libraryreject = true;
       state.libraryError = action.payload;
     });
+
+
+     // ================= Delete Conatct Data  =================
+    builder.addCase( DeleteContactThunk.fulfilled,(state, action) => {
+        state.User_Contact_Data =
+          state.User_Contact_Data.filter(
+            (contact) =>
+              contact._id !== action.payload.id
+          );
+      }
+    );
 
 
 

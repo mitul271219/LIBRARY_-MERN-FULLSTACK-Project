@@ -123,6 +123,35 @@ const Login_User_Get = async (req , res) => {
 }
 
 
+// DELETE USER
+const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    const user = await usersLibraryData.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User Not Found",
+      });
+    }
+
+    await usersLibraryData.findByIdAndDelete(userId);
+
+    return res.status(200).json({
+      msg: "User Deleted Successfully",
+    });
+
+  } catch (err) {
+    console.log(err);
+
+    return res.status(500).json({
+      msg: "Delete User Error",
+    });
+  }
+};
+
+
 
 
   // User checking toke 
@@ -297,6 +326,8 @@ const Contact_User_Get = async (req , res) => {
 }
 
 
+
+
   // contactForm Create 
   const contactFormUser = async (req , res) => {
       const response = req.body 
@@ -308,6 +339,38 @@ const Contact_User_Get = async (req , res) => {
         return res.status(500).json({message:"message not delivered"})
     }
 }
+
+// DELETE CONTACT MESSAGE
+const deleteContact = async (req, res) => {
+  try {
+
+    const id = req.params.id;
+
+    const contact = await contectForm.findById(id);
+
+    if (!contact) {
+      return res.status(404).json({
+        msg: "Contact Message Not Found",
+      });
+    }
+
+    await contectForm.findByIdAndDelete(id);
+
+    return res.status(200).json({
+      msg: "Contact Deleted Successfully",
+    });
+
+  } catch (err) {
+
+    console.log(err);
+
+    return res.status(500).json({
+      msg: "Delete Contact Error",
+    });
+
+  }
+};
+
 
 
 
@@ -791,4 +854,4 @@ const getOrderHistory = async (req, res) => {
 };
 
 
-export{CreateUser , LoginUser , Login_User_Get , UserTokenCheck , LogoutUserToken , authMiddlewareUser , adminMiddleware , getTokenVerifyData , SendRestLink , Contact_User_Get , contactFormUser , upload_USER_ADMIN_Category , Get_Upload_User_Category , resetPassword , deleteCategory , addProducts , updateProductStatus , GetProductData , multiplesImages , getSingleProduct_Multipleimage  , deleteProduct  ,   addToCart,getCartData , updateCartQuantity , removeCartItem , clearCart , createOrder , getOrderHistory}
+export{CreateUser , LoginUser , Login_User_Get , deleteUser , UserTokenCheck , LogoutUserToken , authMiddlewareUser , adminMiddleware , getTokenVerifyData , SendRestLink , Contact_User_Get , deleteContact , contactFormUser , upload_USER_ADMIN_Category , Get_Upload_User_Category , resetPassword , deleteCategory , addProducts , updateProductStatus , GetProductData , multiplesImages , getSingleProduct_Multipleimage  , deleteProduct  ,   addToCart,getCartData , updateCartQuantity , removeCartItem , clearCart , createOrder , getOrderHistory}

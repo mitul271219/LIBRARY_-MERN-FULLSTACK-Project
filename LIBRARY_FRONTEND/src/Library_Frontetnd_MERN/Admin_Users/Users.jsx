@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Admin_Login_Signup_GET } from "../../ReduxStore/LibrarySlice";
+import { Admin_Login_Signup_GET, DeleteUserThunk } from "../../ReduxStore/LibrarySlice";
+import { toast } from "react-toastify";
 
 export const Users = () => {
   const dispatch = useDispatch();
@@ -8,14 +9,21 @@ export const Users = () => {
   console.log(users);
 
   const userToken = localStorage.getItem("userTOKEN");
+
+  const handleDelete = (userId) => {
+  
+    dispatch(DeleteUserThunk(userId)).then((res) => {
+      console.log(res);
+      if (res?.meta?.requestStatus === "fulfilled") {
+         toast.error("User Delete SuccessFully");
+         dispatch(Admin_Login_Signup_GET(userToken));
+      }
+    })
+  };
+
   useEffect(() => {
     dispatch(Admin_Login_Signup_GET(userToken));
-  }, [dispatch]);
-
-
-  const handleDelete = (userId) => {   
-    //   dispatch(DeleteUserThunk(userId, userToken));
-  };
+  }, [dispatch, userToken]);
 
 
   return (
